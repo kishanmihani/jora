@@ -1,0 +1,1 @@
+export const backend_api_url='https://dummyjson.com'

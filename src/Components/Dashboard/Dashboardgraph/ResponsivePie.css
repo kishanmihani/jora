@@ -1,0 +1,26 @@
+.ResponsivePiechart{
+    height: calc(100% - 60px);
+    margin-top: 59px;
+    position: relative;
+}
+
+#Customer-pertsentage {
+    position: absolute;
+    top: calc(50% + 30px);
+    left: calc(50% - 50px);
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+#Customers-container p,#header-part  p{
+    font-size: 8.5pt;
+        font-weight: 500;
+        color:gray;
+    }    
+    #Customer-pertsentage h3{
+        font-size: 22pt;
+    }
+    #Customer-pertsentage p{
+        font-size: 8.5pt;
+        font-weight: 500;
+        color:gray;
+}

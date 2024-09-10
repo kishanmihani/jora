@@ -3,26 +3,41 @@ import React, { Component } from 'react'
 import UserInfoUpdate from '../UserInfoUpdate/UserInfoUpdate'
 
 export default class UserInfo extends Component {
-//   static propTypes = {second: third}
-  
-  constructor(){
-   super()
-   this.state={
-    show:true
-   }
+  constructor(props){
+   super(props);
+   
+  this.state={
+    counter:0
   }
-
-  componentDidMount(){
-    console.log('componentDidMount')
+  this.increment = this.increment.bind(this);
+  this.Decrement = this.Decrement.bind(this);
+  }
+  increment(){
+    console.log(this.state.counter)
+    this.setState((prevState) => ({
+      counter: prevState.counter + 4
+    }));
+  }
+  Decrement(){
+    this.setState((prevState) => {
+      const newValue = prevState.counter - 3;
+      if (newValue < 0) {
+        return { counter: 0 };
+      }
+      return { counter: newValue };
+    });
+    
   }
   render() {
     return (
       <div>
-       <h1>Life Cycle Method class Componenet</h1>
-       {
-        this.state.show ? <UserInfoUpdate />:null
-       }
-       <button onClick={()=>this.setState({show:!this.state.show})}>Toggle button</button>
+         <div>
+          <h1>{this.state.counter}</h1>
+
+          <button onClick={this.increment} >Increment count value 4</button>
+          <br></br>
+         <button onClick={this.Decrement}>Decrement count value 3</button>
+         </div>
       </div>
     )
   }

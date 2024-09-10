@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{lazy, useEffect} from 'react';
 import './Dashboard.css';
 import { CgSearch } from "react-icons/cg";
 import { FaHandsClapping,FaChevronRight } from "react-icons/fa6";
@@ -21,6 +21,7 @@ import ResponsivePie from './Dashboardgraph/ResponsivePie';
 import MonthlyearnBarChart from './MonthlyearnBarChart/MonthlyearnBarChart';
 import Sidbar from './Sidbar/Sidbar';
 import ErrorBoundary from '../ErrorBoundary';
+
 function Dasboard(){
   const navigate = useNavigate();
   const cardItimes=[

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+
 import React, { Component } from 'react'
 import { CgSearch } from "react-icons/cg";
 import { RiCodepenFill } from "react-icons/ri";
@@ -11,12 +11,10 @@ import { LiaProductHunt } from "react-icons/lia"
 import { GrMoney } from "react-icons/gr";
 import {FaChevronRight } from "react-icons/fa6";
 export default class Sidbar extends Component {
-//   static propTypes = {second: third}
   
 
   constructor(props){
     super(props)
-    // debugger;
     this.state={
         userInfo:props.message
     }
@@ -39,10 +37,10 @@ export default class Sidbar extends Component {
                              <li className="list-menu m-auto"><div><p className="list-menu-text mb-0"><span className="list-menu-first"><MdOutlineLiveHelp /></span>Help<span id="list-menu-last"><FaChevronRight /></span></p></div></li>
                          </ul>
                     </div>
-                    
+                    <div className='position-relative'>
                     <div id="profile-conteiner-box">
                       <div id="profile-logo-contianer">
-                     <img src={`${this.state.userInfo[0].userImg}`} id="profile-logo-image"/>
+                     <img src={`${this.state.userInfo[0].userImg}`} alt="profileimg" id="profile-logo-image"/>
                       </div>
                       <div id="profile-container-text">
                          <h4 className='mb-0'>{this.state.userInfo[0].userName} </h4>
@@ -51,6 +49,12 @@ export default class Sidbar extends Component {
                       </div>
                       <span id="downicon"><FaChevronDown /></span>
                     </div>
+                    <div className="show dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile">
+                    <button className="dropdown-item border-bottom" type="button">Action</button>
+                    <button className="dropdown-item border-bottom" type="button">Another action</button>
+                    <button className="dropdown-item border-bottom" type="button">Something else here</button>
+                  </div>
+                  </div>
       </div>
     )
   }

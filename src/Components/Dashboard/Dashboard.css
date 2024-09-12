@@ -541,17 +541,11 @@ display: block;
     width: auto !important;
 }
 }
-/* .toggled-on{
-    inset: 0px auto auto 0px;
-     top: 100%;
-}
-.user-img{
-height: 35px;
-width: 35px;
-}
-.drop-down-icon::after{
-margin-top: 11px;
-} */
- p{
+ /* p{
     margin-bottom: 0px !important;
+ } */
+ .dropdown-profile{
+    left: 50%;
+    transform: translate(-50%, 47px);
+    width: 85%;
  }

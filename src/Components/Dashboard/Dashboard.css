@@ -541,9 +541,7 @@ display: block;
     width: auto !important;
 }
 }
- /* p{
-    margin-bottom: 0px !important;
- } */
+
  .dropdown-profile{
     left: 50%;
     transform: translate(-50%, 47px);

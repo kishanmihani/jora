@@ -5,11 +5,13 @@ import { loginapi } from "../../Config/endpoint";
 import { backend_api_url } from "../../Config/Config";
 import LoginImage from '../../Assests/Images/Login.jpg';
 import { useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Authlogin(){
   const navigate = useNavigate();
-
-  const apifetch = async (values) => {
+  const notify = () => toast("Wow so easy!");
+ 
+  const apifetch =async  (values) => {
     try {
       const response = await fetch(backend_api_url + loginapi, {
         method: 'POST',
@@ -22,15 +24,40 @@ function Authlogin(){
         })
       });
 
-      const data = await response.json();
-       (data.message !== 'Invalid credentials') ? datanotInvalid(data):alert(data.message);
+      const data =await response.json();
+       (data.message !== 'Invalid credentials') ? datanotInvalid(data):Invalid_alert(data);
       
     } catch (err) {
       console.log(err);
     }
   };
 
+  function Invalid_alert(data){
+    toast.warn(data.message, {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });;
+  }
+  function Success_alert(){
+    toast.success('Login Success', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
  const  datanotInvalid =(data)=>{
+    Success_alert()
     localStorage.setItem('token', data.token);
     localStorage.setItem('refreshToken', data.refreshToken);
     localStorage.setItem('FullName', data.firstName + ' ' + data.lastName);
@@ -79,19 +106,19 @@ function Authlogin(){
             <div className='form-group text-left mt-3'>
               <label className='form-label label-left w-100'>Username</label>
               <Field className="form-control" type="text" name="fullname" placeholder="Enter your username" />
-              <ErrorMessage name="fullname" component="div" />
+              <ErrorMessage name="fullname"  className="text-danger text-start" component="div" />
             </div>
 
             <div className='form-group mt-3'>
               <label className='form-label label-left w-100'>Email</label>
               <Field className="form-control" type="email" name="email" placeholder="Enter email address" />
-              <ErrorMessage name="email" component="div" />
+              <ErrorMessage name="email"  className="text-danger text-start" component="div" />
             </div>
 
             <div className='form-group mt-3'>
               <label className='form-label label-left w-100'>Password</label>
               <Field type="password" name="password" className="form-control" placeholder='********' />
-              <ErrorMessage name="password" component="div" />
+              <ErrorMessage name="password"  className="text-danger text-start" component="div" />
             </div>
             <div className="d-flex justify-content-between pt-3">
               <div className="d-flex">
@@ -106,6 +133,22 @@ function Authlogin(){
             <button type="submit" className="btn btn-primary mt-4" disabled={isSubmitting}>
               Login
             </button>
+            <div>
+        <ToastContainer 
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" 
+        >
+
+</ToastContainer>
+      </div>
           </Form>
           <div className="col-sm-0 col-md-0 col-xl-7 col-xxl-7 h-100">
             <img src={LoginImage} className="w-100 h-100" alt='login-poster' />

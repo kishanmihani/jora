@@ -1,24 +1,35 @@
 
-import React, { Component } from 'react'
-import { CgSearch } from "react-icons/cg";
+import React, { Component } from 'react';
 import { RiCodepenFill } from "react-icons/ri";
-import { MdCancel } from "react-icons/md";
 import { TbSettings2 } from "react-icons/tb";
-import { FaChevronDown } from "react-icons/fa6";
-import { CgProfile } from "react-icons/cg";
-import {MdOutlineLiveHelp } from "react-icons/md";
+import { CgProfile ,CgSearch } from "react-icons/cg";
+import {MdOutlineLiveHelp ,MdCancel} from "react-icons/md";
 import { LiaProductHunt } from "react-icons/lia"
 import { GrMoney } from "react-icons/gr";
-import {FaChevronRight } from "react-icons/fa6";
-export default class Sidbar extends Component {
+import {FaChevronRight,FaChevronDown } from "react-icons/fa6";
+import { withRouter } from '../withRouter';
+
+class Sidbar extends Component {
   
 
   constructor(props){
     super(props)
     this.state={
-        userInfo:props.message
+        userInfo:props.message,
+        User_Profile:false,
     }
-    console.log(this.state.userInfo[0].userName)
+    this.ToggleEvent = this.ToggleEvent.bind(this); 
+    this.Logout = this.Logout.bind(this); 
+  }
+  ToggleEvent(e){
+    const currentState = this.state.User_Profile;
+    this.setState({
+      User_Profile: !currentState
+    });
+  }
+  Logout(){
+    localStorage.clear();
+    this.props.navigate('/')
   }
   render() {
     return (
@@ -38,8 +49,8 @@ export default class Sidbar extends Component {
                          </ul>
                     </div>
                     <div className='position-relative'>
-                    <div id="profile-conteiner-box">
-                      <div id="profile-logo-contianer">
+                    <div id="profile-conteiner-box" onClick={this.ToggleEvent}>
+                      <div id="profile-logo-contianer" >
                      <img src={`${this.state.userInfo[0].userImg}`} alt="profileimg" id="profile-logo-image"/>
                       </div>
                       <div id="profile-container-text">
@@ -49,13 +60,13 @@ export default class Sidbar extends Component {
                       </div>
                       <span id="downicon"><FaChevronDown /></span>
                     </div>
-                    <div className="show dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile">
-                    <button className="dropdown-item border-bottom" type="button">Action</button>
-                    <button className="dropdown-item border-bottom" type="button">Another action</button>
-                    <button className="dropdown-item border-bottom" type="button">Something else here</button>
+                    <div className={` ${this.state.User_Profile ? 'show':''} dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile`}>
+                    <button className="dropdown-item border-bottom" type="button">User Info</button>
+                    <button className="dropdown-item border-bottom" type="button" onClick={this.Logout}>Logout</button>
                   </div>
                   </div>
       </div>
     )
   }
 }
+export default withRouter(Sidbar)

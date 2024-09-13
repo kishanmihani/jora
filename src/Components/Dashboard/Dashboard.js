@@ -1,22 +1,13 @@
-import React,{lazy, useEffect} from 'react';
+import React,{ useEffect} from 'react';
 import './Dashboard.css';
 import { CgSearch } from "react-icons/cg";
-import { FaHandsClapping,FaChevronRight } from "react-icons/fa6";
+import { FaHandsClapping } from "react-icons/fa6";
 import { AiOutlineDollar } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
-import { MdOutlineSpeakerNotes } from "react-icons/md";
-import { FaArrowUp } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa"
-import { MdOutlineAccountBalanceWallet,MdOutlineLiveHelp } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import { LiaProductHunt } from "react-icons/lia"
-import { GrMoney } from "react-icons/gr";
+import { FaArrowUp ,FaArrowDown } from "react-icons/fa";
+import { MdOutlineAccountBalanceWallet ,MdOutlineSpeakerNotes } from "react-icons/md";
 import { RxHamburgerMenu} from "react-icons/rx";
-import { RiCodepenFill } from "react-icons/ri";
-import { MdCancel } from "react-icons/md";
-import { TbSettings2 } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa6";
 import ResponsivePie from './Dashboardgraph/ResponsivePie';
 import MonthlyearnBarChart from './MonthlyearnBarChart/MonthlyearnBarChart';
 import Sidbar from './Sidbar/Sidbar';
@@ -34,13 +25,12 @@ function Dasboard(){
   const UserInfo=[
     {"userName":localStorage.getItem('Username'),"userImg":localStorage.getItem('UserImg')}
   ]
-  console.log(UserInfo[0].userImg , UserInfo[0].userName)
   const CheckUserInfo=UserInfo[0].userImg === null && UserInfo[0].userName === null ;
   useEffect(() => {
    if(CheckUserInfo){
     navigate('/') 
    }
-  },[navigate])
+  },)
   
 
 	return (
@@ -66,7 +56,7 @@ function Dasboard(){
                   <section id="card-container-only" >
                   {/* first card*/}
                   {cardItimes.map((item, index) => (
-                  <div id="card">
+                  <div id="card" key={index}>
                     <div id="card-image-container">
                     <div id="card-image"  className={`${
                       item.heading ==='Earning' ?'card-image-zero'

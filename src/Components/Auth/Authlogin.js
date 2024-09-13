@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './Authlogin.css';
 import { loginapi } from "../../Config/endpoint";
@@ -9,8 +9,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Authlogin(){
   const navigate = useNavigate();
-  const notify = () => toast("Wow so easy!");
- 
+  const UserInfo=[
+    {"userName":localStorage.getItem('Username'),"userImg":localStorage.getItem('UserImg')}
+  ]
+  const CheckUserInfo=UserInfo[0].userImg !== (null) && UserInfo[0].userName !== null  ;
+  
+  useEffect(() => {
+   if(CheckUserInfo){
+    navigate('/dashboard') 
+   }
+  })
   const apifetch =async  (values) => {
     try {
       const response = await fetch(backend_api_url + loginapi, {

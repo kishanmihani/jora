@@ -30,7 +30,7 @@ function Dasboard(){
    if(CheckUserInfo){
     navigate('/') 
    }
-  },)
+  })
   
 
 	return (

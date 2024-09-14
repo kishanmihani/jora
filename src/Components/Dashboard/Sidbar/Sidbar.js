@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { RiCodepenFill } from "react-icons/ri";
 import { TbSettings2 } from "react-icons/tb";
 import { CgProfile ,CgSearch } from "react-icons/cg";
@@ -8,8 +8,9 @@ import { LiaProductHunt } from "react-icons/lia"
 import { GrMoney } from "react-icons/gr";
 import {FaChevronRight,FaChevronDown } from "react-icons/fa6";
 import { withRouter } from '../withRouter';
-
-class Sidbar extends Component {
+import logouticon from "../../../Assests/Images/logouticon.png"
+import { AiOutlineLogout } from "react-icons/ai";
+class Sidbar extends PureComponent {
   
 
   constructor(props){
@@ -38,6 +39,7 @@ class Sidbar extends Component {
                     <button onClick={()=> document.getElementById('left-container').style='display:none'} id="cross-button"><MdCancel /></button>
                       <h4><span id="dasboard-icon"><TbSettings2 /></span> <span>Dashboard</span></h4>
                     </div>
+                    <div>
                     <div id="menu-list">
                          <ul className='px-0'>
                              <li id='list-menu-one'className="list-menu m-auto"><div className="p-1 pl-0"><p className="list-menu-text mb-0"><span className="list-menu-first"><CgSearch /></span>Dashboard<span id="list-menu-last" style={{display:'none'}}><FaChevronRight /></span></p></div></li>
@@ -62,9 +64,10 @@ class Sidbar extends Component {
                     </div>
                     <div className={` ${this.state.User_Profile ? 'show':''} dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile`}>
                     <button className="dropdown-item border-bottom" type="button">User Info</button>
-                    <button className="dropdown-item border-bottom" type="button" onClick={this.Logout}>Logout</button>
+                    <button className="dropdown-item border-bottom" type="button" onClick={this.Logout}><img src={logouticon} alt='logouticon' className='iconheight' /><span>Logout</span></button>
                   </div>
                   </div>
+              </div>
       </div>
     )
   }

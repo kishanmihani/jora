@@ -8,8 +8,10 @@ import { LiaProductHunt } from "react-icons/lia"
 import { GrMoney } from "react-icons/gr";
 import {FaChevronRight,FaChevronDown } from "react-icons/fa6";
 import { withRouter } from '../withRouter';
-import logouticon from "../../../Assests/Images/logouticon.png"
-import { AiOutlineLogout } from "react-icons/ai";
+import logouticon from "../../../Assests/Images/logouticon.png";
+import user from "../../../Assests/Images/user.png";
+import { Link} from 'react-router-dom';
+import './Sidbar.css'
 class Sidbar extends PureComponent {
   
 
@@ -18,9 +20,11 @@ class Sidbar extends PureComponent {
     this.state={
         userInfo:props.message,
         User_Profile:false,
+        showdiv:true
     }
     this.ToggleEvent = this.ToggleEvent.bind(this); 
-    this.Logout = this.Logout.bind(this); 
+    this.Logout = this.Logout.bind(this);
+    this.handleClick = this.handleClick.bind(this); 
   }
   ToggleEvent(e){
     const currentState = this.state.User_Profile;
@@ -31,6 +35,12 @@ class Sidbar extends PureComponent {
   Logout(){
     localStorage.clear();
     this.props.navigate('/')
+  }
+  handleClick(){
+    this.setState({
+      showdiv: false
+    });
+    localStorage.setItem('showdiv',this.state.showdiv);
   }
   render() {
     return (
@@ -63,8 +73,8 @@ class Sidbar extends PureComponent {
                       <span id="downicon"><FaChevronDown /></span>
                     </div>
                     <div className={` ${this.state.User_Profile ? 'show':''} dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile`}>
-                    <button className="dropdown-item border-bottom" type="button">User Info</button>
-                    <button className="dropdown-item border-bottom" type="button" onClick={this.Logout}><img src={logouticon} alt='logouticon' className='iconheight' /><span>Logout</span></button>
+                    <button className="dropdown-item " type="button" ><img src={user} alt='logouticon' className='iconheight' /><Link to='/dashboard/UserInfo' onClick={this.handleClick} className='link-secondary link-offset-2 link-underline-opacity-0 align-middle'> User Info</Link></button>
+                    <button className="dropdown-item" type="button" onClick={this.Logout}><img src={logouticon} alt='logouticon' className='iconheight' />&nbsp;<span className='link-secondary link-offset-2 link-underline-opacity-0 '>Logout</span></button>
                   </div>
                   </div>
               </div>

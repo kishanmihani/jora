@@ -1,4 +1,7 @@
 .iconheight{
-    height:24px;
-    width:24px
+    height:21px;
+    width:21px
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #fff4f4;
 }

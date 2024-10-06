@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import MonthlyearnBarChart from '../MonthlyearnBarChart/MonthlyearnBarChart'
 import ResponsivePie from '../Dashboardgraph/ResponsivePie'
 import { AiOutlineDollar } from "react-icons/ai";
@@ -6,7 +6,7 @@ import { BsHandbag } from "react-icons/bs";
 import { FaArrowUp ,FaArrowDown } from "react-icons/fa";
 import { MdOutlineAccountBalanceWallet ,MdOutlineSpeakerNotes } from "react-icons/md";
 
-export default class DashboardIndex extends Component {
+class DashboardIndex extends PureComponent {
   render() {
     const cardItimes=[
         {"heading":"Earning","persentag":37.8,"rate":"$198k"},
@@ -59,3 +59,4 @@ export default class DashboardIndex extends Component {
     )
   }
 }
+export default  React.memo(DashboardIndex)

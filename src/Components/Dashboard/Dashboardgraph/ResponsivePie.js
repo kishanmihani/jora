@@ -38,4 +38,4 @@ function ResponsivePie() {
   )
 }
 
-export default ResponsivePie
+export default React.memo(ResponsivePie)

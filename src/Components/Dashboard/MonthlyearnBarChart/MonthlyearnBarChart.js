@@ -36,4 +36,4 @@ const xLabels = ['Jan','FEB','MAR','APR','MAY','JUN','JULY','AUG','SEP','OCT','N
   )
 }
 
-export default MonthlyearnBarChart
+export default React.memo(MonthlyearnBarChart)

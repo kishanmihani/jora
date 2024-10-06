@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './Authlogin.css';
 import { loginapi } from "../../Config/endpoint";
@@ -13,12 +13,14 @@ function Authlogin(){
     {"userName":localStorage.getItem('Username'),"userImg":localStorage.getItem('UserImg')}
   ]
   const CheckUserInfo=UserInfo[0].userImg !== (null) && UserInfo[0].userName !== null  ;
-  
   useEffect(() => {
    if(CheckUserInfo){
     navigate('/dashboard') 
    }
-  })
+   else{
+    navigate('')
+   }
+  },[CheckUserInfo])
   const apifetch =async  (values) => {
     try {
       const response = await fetch(backend_api_url + loginapi, {
@@ -98,10 +100,8 @@ function Authlogin(){
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
           apifetch(values);
           setSubmitting(false);
-        }, 400);
       }}
     >
       {({ isSubmitting }) => (
@@ -113,7 +113,7 @@ function Authlogin(){
             </div>
             <div className='form-group text-left mt-3'>
               <label className='form-label label-left w-100'>Username</label>
-              <Field className="form-control" type="text" name="fullname" placeholder="Enter your username" />
+              <Field className="form-control" autoFocus={true} type="text"  name="fullname" placeholder="Enter your username" />
               <ErrorMessage name="fullname"  className="text-danger text-start" component="div" />
             </div>
 
@@ -153,9 +153,7 @@ function Authlogin(){
         draggable
         pauseOnHover
         theme="light" 
-        >
-
-</ToastContainer>
+        ></ToastContainer>
       </div>
           </Form>
           <div className="col-sm-0 col-md-0 col-xl-7 col-xxl-7 h-100">
@@ -167,4 +165,4 @@ function Authlogin(){
   );
 };
 
-export default Authlogin;
+export default React.memo(Authlogin);

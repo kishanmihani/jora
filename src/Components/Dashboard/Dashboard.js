@@ -1,4 +1,4 @@
-import React,{ useEffect} from 'react';
+import React,{ useEffect,useContext} from 'react';
 import './Dashboard.css';
 import { CgSearch } from "react-icons/cg";
 import { FaHandsClapping } from "react-icons/fa6";
@@ -9,7 +9,6 @@ import ErrorBoundary from '../ErrorBoundary';
 
 function Dasboard(){
   const navigate = useNavigate();
-
   const UserInfo=[
     {"userName":localStorage.getItem('Username'),"userImg":localStorage.getItem('UserImg')}
   ]
@@ -24,15 +23,12 @@ function Dasboard(){
 	return (
       <ErrorBoundary>
         
-	        <div id="page-Container">
+	        <div id="page-Container" >
 
-	             <div id="left-container">
+	             <div id="left-container" className='rounded m-1'>
                   <Sidbar message={UserInfo}></Sidbar>
               </div>
-              {/* <Routes>
-        <Route path="/dashboard/UserInfo" element={<UserInfo message='2' />} />
-
-        </Routes> */}
+              
         
 	             <div id="right-container" className='overflow-auto'>
                   <header id="first-header">  
@@ -47,10 +43,23 @@ function Dasboard(){
                    </div>
                   </header>
                   
-                  <section>
+                  <section className='Dashoard-routdiv'>
                   <Outlet></Outlet>
                   </section>
-                  
+                  {/* <UserContext.Consumer>
+                        {
+                          user=>{
+                            return (
+                              <ChannelContext.Consumer>
+                                { ChannelContext =>{
+                            return ( <div>User context value {user},{ChannelContext}</div>)
+                            }
+                                }
+                              </ChannelContext.Consumer>
+                            )
+                          }
+                        }
+                      </UserContext.Consumer> */}
                    {/*last table*/}
 
                   {/* <section id="product-table-list">
@@ -123,4 +132,4 @@ function Dasboard(){
 
 }
 
-export default Dasboard;
+export default React.memo(Dasboard);

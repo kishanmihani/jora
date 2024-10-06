@@ -10,7 +10,7 @@ import {FaChevronRight,FaChevronDown } from "react-icons/fa6";
 import { withRouter } from '../withRouter';
 import logouticon from "../../../Assests/Images/logouticon.png";
 import user from "../../../Assests/Images/user.png";
-import { Link} from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import './Sidbar.css'
 class Sidbar extends PureComponent {
   
@@ -24,7 +24,6 @@ class Sidbar extends PureComponent {
     }
     this.ToggleEvent = this.ToggleEvent.bind(this); 
     this.Logout = this.Logout.bind(this);
-    this.handleClick = this.handleClick.bind(this); 
   }
   ToggleEvent(e){
     const currentState = this.state.User_Profile;
@@ -36,12 +35,7 @@ class Sidbar extends PureComponent {
     localStorage.clear();
     this.props.navigate('/')
   }
-  handleClick(){
-    this.setState({
-      showdiv: false
-    });
-    localStorage.setItem('showdiv',this.state.showdiv);
-  }
+  
   render() {
     return (
       <div>
@@ -52,8 +46,8 @@ class Sidbar extends PureComponent {
                     <div>
                     <div id="menu-list">
                          <ul className='px-0'>
-                             <li id='list-menu-one'className="list-menu m-auto"><div className="p-1 pl-0"><p className="list-menu-text mb-0"><span className="list-menu-first"><CgSearch /></span>Dashboard<span id="list-menu-last" style={{display:'none'}}><FaChevronRight /></span></p></div></li>
-                             <li className="list-menu m-auto"><div><p className="list-menu-text mb-0"><span className="list-menu-first"><LiaProductHunt /></span>Product<span id="list-menu-last"><FaChevronRight /></span></p></div></li>
+                             <li className="list-menu m-auto"><NavLink to='/dashboard' activeClassName="list-menu-highlight" className='text-white  link-offset-2 link-underline-opacity-0 align-middle'><div><p className="list-menu-text mb-0"><span className="list-menu-first"><TbSettings2 /></span>Dashboard<span id="list-menu-last" style={{display:'none'}}><FaChevronRight /></span></p></div></NavLink></li>
+                             <li className="list-menu m-auto" ><NavLink to='/dashboard/Productlist' activeClassName="list-menu-highlight" className='text-white  link-offset-2 link-underline-opacity-0 align-middle'><div><p className="list-menu-text mb-0"><span className="list-menu-first"><LiaProductHunt /></span>Product<span id="list-menu-last"><FaChevronRight /></span></p></div></NavLink></li>
                              <li className="list-menu m-auto"><div><p className="list-menu-text mb-0"><span className="list-menu-first"><CgProfile  /></span>Customers<span id="list-menu-last"><FaChevronRight /></span></p></div></li>
                              <li className="list-menu m-auto"><div><p className="list-menu-text mb-0"><span className="list-menu-first"><GrMoney /></span>Income<span id="list-menu-last"><FaChevronRight /></span></p></div></li>
                              <li className="list-menu m-auto"><div><p className="list-menu-text mb-0"><span className="list-menu-first"><RiCodepenFill /></span>Promote<span  id="list-menu-last"><FaChevronRight /></span></p></div></li>
@@ -73,7 +67,8 @@ class Sidbar extends PureComponent {
                       <span id="downicon"><FaChevronDown /></span>
                     </div>
                     <div className={` ${this.state.User_Profile ? 'show':''} dropdown-menu dropdown-menu-right position-absolute top-0 dropdown-profile`}>
-                    <button className="dropdown-item " type="button" ><img src={user} alt='logouticon' className='iconheight' /><Link to='/dashboard/UserInfo' onClick={this.handleClick} className='link-secondary link-offset-2 link-underline-opacity-0 align-middle'> User Info</Link></button>
+                    <button className="dropdown-item " type="button" ><img src={user} alt='logouticon' className='iconheight' /><Link to='/dashboard/HooksCounterOne'  className='link-secondary link-offset-2 link-underline-opacity-0 align-middle'> HooksCounterOne</Link></button>
+                    <button className="dropdown-item " type="button" ><img src={user} alt='logouticon' className='iconheight' /><Link to='/dashboard/UserInfo'  className='link-secondary link-offset-2 link-underline-opacity-0 align-middle'> User Info</Link></button>
                     <button className="dropdown-item" type="button" onClick={this.Logout}><img src={logouticon} alt='logouticon' className='iconheight' />&nbsp;<span className='link-secondary link-offset-2 link-underline-opacity-0 '>Logout</span></button>
                   </div>
                   </div>
@@ -82,4 +77,4 @@ class Sidbar extends PureComponent {
     )
   }
 }
-export default withRouter(Sidbar)
+export default React.memo(withRouter(Sidbar))

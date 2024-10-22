@@ -150,7 +150,7 @@ tablestatusupdate(event, id) {
           errors.Duedate = "Enter Due date";
         }
         else if(!values.status){
-          errors.Duedate = "Enter status";
+          errors.status = "Enter status";
         }
         return errors;
       }}

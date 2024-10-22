@@ -99,7 +99,7 @@ tablestatusupdate(event, id) {
                     </div>
             </div>
             <div className='custom-scrollbar-css tasklisttable overflow-auto'>
-           <table className='table'>
+           <table className='table text-start'>
             <thead>
              <tr className='sticky-top z-2'>
                 <th>S.N</th>
@@ -115,15 +115,15 @@ tablestatusupdate(event, id) {
               {this.state.datalist.map((data,i)=>{
                
                 return ( <tr key={i} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
-                  <td className='fw-bolder'>{ i}</td>
+                  <td className='fw-bolder'>{ i + 1}</td>
                   <td>{data.taskname}</td>
                   <td>{data.Assigne}</td>
-                  <td><select value={data.status}  onChange={(e) => this.tablestatusupdate(e, data.id)}>
+                  <td><select value={data.status} className={`${data.status === 'complete'? 'text-success':'text-danger'}`} onChange={(e) => this.tablestatusupdate(e, data.id)}>
                     <option  value='' >All</option>
                         <option value="progress">progress</option>
                         <option value="complete">complete</option>
                     </select></td>
-                  <td>{data.priorty}</td>
+                  <td className={`text-start ${data.priorty === 'High'? 'text-danger':data.priorty === 'Low'?'text-primary':'text-warning' }`}>{data.priorty}</td>
                   <td>{data.Duedate}</td>
                   <td className='text-danger cursor-pointer' onClick={()=>this.setState((prevState)=>({ datalist: prevState.datalist.filter((a,ii) =>ii !== i)}))}><MdDeleteForever /></td>
                   </tr>
@@ -155,13 +155,7 @@ tablestatusupdate(event, id) {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        // apifetch(values);
-    //   const newId =
-    //   this.state.datalist.length > 0
-    //     ? Math.max(...this.state.datalist.map((task) => task.id)) + 1
-    //     : 1;
-
-    // const newTask = { ...values, id: newId };     
+       
           this.setState((prevState) => ({
             datalist: prevState.datalist.concat(values),
             popup: false

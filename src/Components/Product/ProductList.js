@@ -31,19 +31,28 @@ const reducer = (state,action) =>{
 }
 export default function ProductList() {
   const [state,dispatch]= useReducer(reducer, initialState);
+  // const [datafeched,setdatafeched]
   useEffect(()=>{
-      axios
-      .get('https://dummyjson.com/products')
-      .then(response =>{
-          dispatch({type:'FETCH_SUCCESS',payload:response.data})
-          console.log(state.post)
-      })
-      .catch(error =>{
-          dispatch({type:'FETCH_ERROR'})
-      })
+    if(state.loading){
+    tabledata()
+    }else{
+      
+    }
+    
 
   },[state])
     
+  function tabledata(){
+    axios
+    .get('https://dummyjson.com/products')
+    .then(response =>{
+        dispatch({type:'FETCH_SUCCESS',payload:response.data})
+        console.log(state.post)
+    })
+    .catch(error =>{
+        dispatch({type:'FETCH_ERROR'})
+    })
+  }
     return (
       <div className='card container-fluids border-0 h-100 overflow-auto ' id='productlist'>
         <div className='card-body h-100 w-100 col-12 flex-wrap d-flex'>

@@ -5,6 +5,7 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { FaArrowUp ,FaArrowDown } from "react-icons/fa";
 import { MdOutlineAccountBalanceWallet ,MdOutlineSpeakerNotes } from "react-icons/md";
+import TaskList from '../../TaskList/TaskList';
 
 class DashboardIndex extends PureComponent {
   render() {
@@ -53,6 +54,9 @@ class DashboardIndex extends PureComponent {
                     <MonthlyearnBarChart></MonthlyearnBarChart>
                     
                     <ResponsivePie></ResponsivePie>
+                    </section>
+                    <section id="Table">
+                     {/* <TaskList /> */}
                     </section>
                     </section>
       </React.Fragment>

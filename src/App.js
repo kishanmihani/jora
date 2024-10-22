@@ -13,6 +13,9 @@ import CounterThree from './Config/Practice/CounterThree';
 import ProductList from './Components/Product/ProductList';
 import TestIndex from './Components/Product/Test/TestIndex';
 import Loadericon from './Components/Dashboard/Loadericon/Loadericon';
+import TestEmail from './Components/Product/Test/TestEmail/TestEmail';
+import TestChoosPassword from './Components/Product/Test/TestChoosPassword/TestChoosPassword';
+import TaskList from './Components/TaskList/TaskList';
 const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
 export const UserContext=React.createContext();
@@ -34,10 +37,13 @@ function App() {
             <Route path="HooksCounterOne" element={<UserContext.Provider value={'Vishwas'}><ChannelContext.Provider value='codeinnovation'><HooksCounterOne  /></ChannelContext.Provider></UserContext.Provider>}></Route>
 
             <Route path="ProductList" element={<ProductList />}></Route> 
-        
+            <Route path="TaskList" element={<TaskList />}></Route>
 
          </Route>
-         <Route path='TestIndex' element={<TestIndex />}></Route>
+         <Route path='TestIndex' element={<TestIndex />}>
+         <Route path='' element={<TestEmail />} /> 
+         <Route path='TestChoosePassword' element={<TestChoosPassword />} />         
+         </Route>
          <Route path='*' element={
           <Suspense fallback={<Loadericon />}>
           <MarkdownPreview /></Suspense>}></Route>  

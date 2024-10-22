@@ -112,10 +112,10 @@ tablestatusupdate(event, id) {
              </tr>
             </thead>
             <tbody>
-              {this.state.datalist.map((data)=>{
+              {this.state.datalist.map((data,i)=>{
                
-                return ( <tr key={data.id} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
-                  <td className='fw-bolder'>{data.id + 1}</td>
+                return ( <tr key={i} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
+                  <td className='fw-bolder'>{ i}</td>
                   <td>{data.taskname}</td>
                   <td>{data.Assigne}</td>
                   <td><select value={data.status}  onChange={(e) => this.tablestatusupdate(e, data.id)}>
@@ -125,7 +125,7 @@ tablestatusupdate(event, id) {
                     </select></td>
                   <td>{data.priorty}</td>
                   <td>{data.Duedate}</td>
-                  <td className='text-danger cursor-pointer' onClick={()=>this.setState((prevState)=>({ datalist: prevState.datalist.filter(a =>a.id !== data.id)}))}><MdDeleteForever /></td>
+                  <td className='text-danger cursor-pointer' onClick={()=>this.setState((prevState)=>({ datalist: prevState.datalist.filter((a,ii) =>ii !== i)}))}><MdDeleteForever /></td>
                   </tr>
                   )
                 
@@ -156,8 +156,12 @@ tablestatusupdate(event, id) {
       }}
       onSubmit={(values, { setSubmitting }) => {
         // apifetch(values);
-      //  values.id= this.state.datalist.length + 1;
-        
+    //   const newId =
+    //   this.state.datalist.length > 0
+    //     ? Math.max(...this.state.datalist.map((task) => task.id)) + 1
+    //     : 1;
+
+    // const newTask = { ...values, id: newId };     
           this.setState((prevState) => ({
             datalist: prevState.datalist.concat(values),
             popup: false

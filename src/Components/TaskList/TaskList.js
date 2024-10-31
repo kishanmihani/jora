@@ -91,26 +91,24 @@ export default class TaskList extends PureComponent {
 });
 
   }
-  tdcheck(e){
-    const {value,checked}=e.target;
-    const  {tdcheckbox}=this.state;
-    let valuetd;
-    if(checked){
-      tdcheckbox = [...tdcheckbox,value];
-      console.log(value)
-    }
-    else{
-      valuetd = tdcheckbox.filter((el)=> el !==value);
-      console.log(valuetd)
-      if(this.state.Allcheck){
-        this.setState({
-          Allcheck:!this.state.Allcheck
-        })
-      }
-    }
-    tdcheckbox = parseInt(tdcheckbox)
-    this.setState({tdcheckbox:valuetd})
-  }
+  tdcheck(e) {
+
+    const { value, checked } = e.target;
+        let { tdcheckbox } = this.state;
+       let numvalues=parseInt(value)
+        if (checked) {
+            tdcheckbox = [...tdcheckbox, numvalues];
+        } else {
+            tdcheckbox = tdcheckbox.filter(el => el !== numvalues);
+            if (this.state.Allcheck) {
+                this.setState({
+                    Allcheck: false
+                });
+            }
+        }
+        this.setState({ tdcheckbox });
+}
+
   addTask(){
     this.setState((prevState) => ({popup:true}))
   }
@@ -186,7 +184,7 @@ tablestatusupdate(event, id) {
               {this.state.datalist.map((data,i)=>{
                
                 return ( <tr key={data.id} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
-                <td><input type='checkbox' value={data.id} onClick={this.tdcheck} checked={this.state.Allcheck} className='form-check-input' ></input></td>                  <td className='fw-bolder'>{ data.id}</td>
+                <td><input type='checkbox' value={data.id} onClick={this.tdcheck} checked={this.state.tdcheckbox.includes(data.id)} className='form-check-input' ></input></td>                  <td className='fw-bolder'>{ data.id}</td>
                   <td><small>{data.taskname}</small></td>
                   <td><small>{data.Assigne}</small></td>
                   <td><small><select value={data.status} className={`${data.status === 'complete'? 'text-success':'text-danger'}`} onChange={(e) => this.tablestatusupdate(e, data.id)}>

@@ -8,29 +8,31 @@ const xLabels = ['Jan','FEB','MAR','APR','MAY','JUN','JULY','AUG','SEP','OCT','N
   return (
     <React.Fragment>
         <div id="graph-part-one">
-               
-               <div id="header-part">
+               <div className='text-start d-flex justify-content-between align-items-center ps-2 pe-2'>
+               <div id="header-part position-relative">
                 <h4 className='m-0'>Overview</h4>
                 <p className='m-0'>Monthly Earning</p>
                </div>
-               <div id="header-prat-two">
-                 <select>
+               <div id="header-prat-two ">
+                 <select className='form-select'>
                        <option>Quaterly</option>
                  </select>
                </div>
-
-               <div id="barchart-container" style={{'height':'38vh'}}>
-                {/* <ResponsiveChartContainer> */}
+               </div>
+               {/* <ResponsiveChartContainer> */}
+               <div id="barchart-container" >
+                
                 <BarChart
                  series={[
      
-    { data: uData, label: 'uv', id: 'uvId', color: '#2a20c2' },
+    { data: uData, label: 'uv', id: 'uvId' },
   ]}
                    xAxis={[{ data: xLabels, scaleType: 'band' },{stroke: 'none',ticks:{display:true}}]}
   
-              />            
-              {/* </ResponsiveChartContainer>    */}
+              />              
                </div>
+               
+              {/* </ResponsiveChartContainer>  */}
                </div>
     </React.Fragment>
   )

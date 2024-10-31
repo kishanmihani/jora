@@ -3,15 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FaFilter } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import './TaskList.css'
+import { GiConsoleController } from 'react-icons/gi';
 const taklist=[
-  {
-    'id': 0,
-    'taskname':'login screen',
-    'Assigne':'Kishan',
-    'status':'progress',
-    'priorty':'Low',
-    'Duedate':'21-10-2024'
-  },
   {
     'id': 1,
     'taskname':'login screen',
@@ -21,16 +14,24 @@ const taklist=[
     'Duedate':'21-10-2024'
   },
   {
-    'id':2,
-    'taskname':'login screen',
+    'id': 2,
+    'taskname':'order screen',
+    'Assigne':'Kishan',
+    'status':'progress',
+    'priorty':'Low',
+    'Duedate':'21-10-2024'
+  },
+  {
+    'id':3,
+    'taskname':'product list',
     'Assigne':'Kishan',
     'status':'complete',
     'priorty':'Medium',
     'Duedate':'21-10-2024'
   },
   {
-     'id': 3,
-    'taskname':'login screen',
+     'id': 4,
+    'taskname':'product update',
     'Assigne':'Kishan',
     'status':'progress',
     'priorty':'High',
@@ -40,17 +41,75 @@ const taklist=[
 export default class TaskList extends PureComponent {
   constructor(){
     super();
-    console.log(taklist)
     this.state={
       datalist:taklist,
       popup:false,
       datepinaker:new Date(),
-      statusfilter:''
+      statusfilter:'',
+      Allcheck:false,
+      tdcheckbox:[]
     }
     this.addTask=this.addTask.bind(this);
     this.dateevent=this.dateevent.bind(this);
     this.statusfilter=this.statusfilter.bind(this);
     this.tablestatusupdate = this.tablestatusupdate.bind(this);
+    this.allcheck=this.allcheck.bind(this);
+    this.tdcheck=this.tdcheck.bind(this)
+  }
+  allcheck(e){
+  //  this.setState((prevState)=>({
+  //   Allcheck:!prevState.Allcheck
+  //  }),()=>{
+  //   this.state.Allcheck ? this.tdcheck(true):this.tdcheck(false);
+  //  })
+  const  {checked}=e.target;
+  const   {datalist}=this.state;
+  const collections=[];
+  if(checked){
+
+    this.setState({
+      tdcheckbox:[]
+    },()=>{
+      for(let check of datalist){
+        console.log(check.id)
+        // for(const item of check.datalist){
+          collections.push(check.id)
+        // }
+      }
+      this.setState({
+        tdcheckbox:collections
+      })
+    })
+  }
+  else{
+    this.setState({
+      tdcheckbox:[]
+    })
+  }
+  this.setState({
+    Allcheck: !this.state.Allcheck
+});
+
+  }
+  tdcheck(e){
+    const {value,checked}=e.target;
+    const  {tdcheckbox}=this.state;
+    let valuetd;
+    if(checked){
+      tdcheckbox = [...tdcheckbox,value];
+      console.log(value)
+    }
+    else{
+      valuetd = tdcheckbox.filter((el)=> el !==value);
+      console.log(valuetd)
+      if(this.state.Allcheck){
+        this.setState({
+          Allcheck:!this.state.Allcheck
+        })
+      }
+    }
+    tdcheckbox = parseInt(tdcheckbox)
+    this.setState({tdcheckbox:valuetd})
   }
   addTask(){
     this.setState((prevState) => ({popup:true}))
@@ -99,33 +158,45 @@ tablestatusupdate(event, id) {
                     </div>
             </div>
             <div className='custom-scrollbar-css tasklisttable overflow-auto'>
-           <table className='table text-start'>
+           <table className='table text-start tasklist'>
             <thead>
              <tr className='sticky-top z-2'>
-                <th>S.N</th>
-                <th>Task Name</th>
-                <th>Assignee</th>
-                <th>Priorty</th>
-                <th>status</th>
-                <th>Due date</th>
-                <th>Delete</th>
+                <th className='d-flex'>
+                  <div className="input-group w-auto ">
+                    <div className="input-group-append">
+                      <input type='checkbox' className='form-check-input' checked={this.state.Allcheck} onClick={this.allcheck}></input>
+                    </div>
+                    <select className='d-none custom-select border border-primary rounded border-right-0 ms-1'>
+                        <option selected value='' >Select..</option>
+                        <option value="progress">Accepted</option>
+                        <option value="complete">Not Accepted</option>
+                    </select>
+                  </div>
+                </th>
+                <th><small>S.N</small></th>
+                <th><small>Task Name</small></th>
+                <th><small>Assignee</small></th>
+                <th><small>Priorty</small></th>
+                <th><small>status</small></th>
+                <th><small>Due date</small></th>
+                <th><small>Delete</small></th>
              </tr>
             </thead>
             <tbody>
               {this.state.datalist.map((data,i)=>{
                
-                return ( <tr key={i} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
-                  <td className='fw-bolder'>{ i + 1}</td>
-                  <td>{data.taskname}</td>
-                  <td>{data.Assigne}</td>
-                  <td><select value={data.status} className={`${data.status === 'complete'? 'text-success':'text-danger'}`} onChange={(e) => this.tablestatusupdate(e, data.id)}>
+                return ( <tr key={data.id} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
+                <td><input type='checkbox' value={data.id} onClick={this.tdcheck} checked={this.state.Allcheck} className='form-check-input' ></input></td>                  <td className='fw-bolder'>{ data.id}</td>
+                  <td><small>{data.taskname}</small></td>
+                  <td><small>{data.Assigne}</small></td>
+                  <td><small><select value={data.status} className={`${data.status === 'complete'? 'text-success':'text-danger'}`} onChange={(e) => this.tablestatusupdate(e, data.id)}>
                     <option  value='' >All</option>
                         <option value="progress">progress</option>
                         <option value="complete">complete</option>
-                    </select></td>
-                  <td className={`text-start ${data.priorty === 'High'? 'text-danger':data.priorty === 'Low'?'text-primary':'text-warning' }`}>{data.priorty}</td>
-                  <td>{data.Duedate}</td>
-                  <td className='text-danger cursor-pointer' onClick={()=>this.setState((prevState)=>({ datalist: prevState.datalist.filter((a,ii) =>ii !== i)}))}><MdDeleteForever /></td>
+                    </select></small></td>
+                  <td className={`text-start ${data.priorty === 'High'? 'text-danger':data.priorty === 'Low'?'text-primary':'text-warning' }`}><small>{data.priorty}</small></td>
+                  <td><small>{data.Duedate}</small></td>
+                  <td className='text-danger cursor-pointer fs-5' onClick={()=>this.setState((prevState)=>({ datalist: prevState.datalist.filter((a,ii) =>ii !== i)}))}><small><MdDeleteForever /></small></td>
                   </tr>
                   )
                 

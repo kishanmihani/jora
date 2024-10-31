@@ -57,7 +57,7 @@ export default function ProductList() {
       <div className='card container-fluids border-0 h-100 overflow-auto ' id='productlist'>
         <div className='card-body h-100 w-100 col-12 flex-wrap d-flex'>
         
-        {state.error ? state.error : null}
+        {state.error ? state.error : null | undefined}
         {state.loading ?  <Loadericon />:
         (state.post.products).map((item,index)=>{
        return   <div key={index} className=' col-xs-12 col-sm-12 col-md-6 col-xl-4 col-xxl-3 p-2 box-height'  >

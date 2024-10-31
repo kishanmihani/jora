@@ -30,101 +30,23 @@ function Dasboard(){
               </div>
               
         
-	             <div id="right-container" className='overflow-auto'>
+	             <div id="right-container" className='overflow-auto custom-scrollbar-css'>
                   <header id="first-header">  
                    <div id="profile-name">
                    <button onClick={()=> document.getElementById('left-container').style='display:block'} id="menu-button"><RxHamburgerMenu /></button>
                    <h3 className='mb-0'> Hello {UserInfo[0].userName} <span id="handicon"><FaHandsClapping /></span></h3>
                    </div>
 
-                   <div id="input-container">
-                   <span id="search-icon"><CgSearch /></span>
-                   <input type='text' id="input-search" placeholder='search'/> 
+                   <div id="input-container" className='border-0 '>
+                   <span id="search-icon " className='position-absolute text-secondary '><CgSearch /></span>
+                   <input type='text' id="input-search" className='form-control' placeholder='search'/> 
                    </div>
                   </header>
                   
                   <section className='Dashoard-routdiv'>
                   <Outlet></Outlet>
                   </section>
-                  {/* <UserContext.Consumer>
-                        {
-                          user=>{
-                            return (
-                              <ChannelContext.Consumer>
-                                { ChannelContext =>{
-                            return ( <div>User context value {user},{ChannelContext}</div>)
-                            }
-                                }
-                              </ChannelContext.Consumer>
-                            )
-                          }
-                        }
-                      </UserContext.Consumer> */}
-                   {/*last table*/}
-
-                  {/* <section id="product-table-list">
-                   <div id="product-first-header">
-                     <div id="product-text-heading">
-                     <h3>Product Sell</h3>
-                     </div>
-
-                     <div id="input-select-container" >
-                      <div id="input-container-product"  className='input-cntainer-table'>
-                   <span id="search-icon-product"><CgSearch /></span>
-                   <input type='text' id="input-search-product" placeholder='search'/> 
-                   </div>
-
-                   <div>
-                    <select id="select-record">
-                       <option>Last 30day</option>
-                    </select>
-                   </div>
-                     </div>
-                   </div>
-
-                   <div id='product-table-div'>
-                    <table id='product-table'>
-                     <thead>
-                             <tr>
-                              <th id="first-thead">Product Name</th>
-                              <th>Stock</th>
-                              <th>Price</th>
-                              <th>Total Sales</th>
-                             </tr>
-                     </thead>
-
-                     <tbody>
-                             <tr>
-                              <td>
-                              <div id="contins-small">
-                              <div id="imgbox"><img className=" imgprofile"   id='imgbox-img' /></div>
-                              <div id="textbox">
-                              <p id="bold" className='mb-0'>Abstract</p>
-                              <p className='mb-0'>lorem one tow three</p>
-                              </div>
-                              </div>
-                              </td>
-                              <td>32 in Stock</td>
-                              <td>$45.99</td>
-                              <td>20</td>
-                             </tr>
-                             <tr>
-                              <td><div id="contins-small">
-                              <div id="imgbox"><img className=' imgprofile'   id='imgbox-img' /></div>
-                              <div id="textbox">
-                              <p id="bold" className='mb-0'>Abstract</p>
-                              <p className='mb-0'>lorem one tow three
-                              </p>
-                              </div>
-                              </div></td>
-                              <td>32 in Stock</td>
-                              <td>$45.99</td>
-                              <td>20</td>
-                             </tr>
-                     </tbody>
-                    </table>
-                   </div>
-                  </section> */}
+                  
 	             </div>
 	        </div>
         </ErrorBoundary>

@@ -10,4 +10,54 @@
 }
 .testcontinue{
     width: fit-content;
+    /* height: 2rem; */
+}
+.blackcolor{
+    background-color: black !important;
+}
+#medialogo{
+    height: 30px;
+    width:30px
+}
+@media screen and (max-width:365px) {
+    #footerbody,#passworddowntext,#testpasswordlabel{
+        font-size: xx-small !important;;
+    }    
+}
+@media screen and (max-width:518px) {
+    #footerbody,#passworddowntext,#testpasswordlabel{
+        font-size: smaller !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }    
+    #testPasswordcm{
+      padding: 15px !important;
+    }
+    #medialogo{
+        margin-right:1.2rem !important ;
+    }
+    .testbreak{
+        display:block ;
+    }
+}
+
+@media screen and (max-width:768px) {
+    #testEmailinput,#testbuttons,#testpasswordlabel{
+        width: 100% !important;
+        border-radius: 0px !important;
+    }    
+    #testbuttons{
+        height: 88px;
+        overflow: hidden;
+    }
+    .testbreak{
+        display:none ;
+    }
+    .testlogo{
+        width:100px;
+    }
+    #formtest{
+       padding-top: 25px !important;
+       margin: 0px !important;
+    }
 }

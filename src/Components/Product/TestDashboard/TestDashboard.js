@@ -4,9 +4,9 @@ import TestFooter from '../Test/TestFooter/TestFooter'
  class TestDashboard extends PureComponent {
   render() {
     return (
-      <div>
-        <TestFooter />
-      </div>
+      <React.Fragment>
+        
+      </React.Fragment>
     )
   }
 }

@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FaFilter } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import './TaskList.css'
-import { GiConsoleController } from 'react-icons/gi';
 const taklist=[
   {
     'id': 1,
@@ -94,7 +93,7 @@ export default class TaskList extends PureComponent {
   tdcheck(e) {
 
     const { value, checked } = e.target;
-        let { tdcheckbox } = this.state;
+        let { tdcheckbox,datalist } = this.state;
        let numvalues=parseInt(value)
         if (checked) {
             tdcheckbox = [...tdcheckbox, numvalues];
@@ -107,10 +106,17 @@ export default class TaskList extends PureComponent {
             }
         }
         this.setState({ tdcheckbox });
+        if(tdcheckbox.length === datalist.length){
+          this.setState({
+                    Allcheck: true
+                });
+        }
 }
 
   addTask(){
     this.setState((prevState) => ({popup:true}))
+        this.setState((prevState) => ({taskname:true}))
+
   }
 
   dateevent(e){
@@ -133,7 +139,7 @@ tablestatusupdate(event, id) {
     }));
   }
   render() {
-    
+     
     return (
       <div className='card w-100 h-100 '>
           <div className='card-header '>
@@ -223,17 +229,23 @@ tablestatusupdate(event, id) {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-       
+      onSubmit={(values,{resetForm}) => {
+        // const datalist=this.state.datalist;
+        try{
+        values.id=this.state.datalist[this.state.datalist.length  - 1].id + 1;}
+        catch(e){console.log(e)}
           this.setState((prevState) => ({
             datalist: prevState.datalist.concat(values),
             popup: false
-           }))
-        setSubmitting(false);
-        
+           }),()=>{
+              values={taskname: "",Assigne: "", status:'',Duedate: "" ,priorty:"",id:""}
+           })
+           
+        // setSubmitting(false);
+        resetForm();
     }}
-  >
-    {({ isSubmitting }) => (
+  resetForm>
+    {() => (
       <Form className='justify-content-center col-sm-12 col-md-12 col-xl-12 col-xxl-12  text-left d-flex flex-column'>
         <div className='form-group text-left w-100'>
               <label className='form-label label-left w-100'>Task name</label>
@@ -279,7 +291,7 @@ tablestatusupdate(event, id) {
               
             </div>
             <div className='mt-3 text-end'>
-                  <button className='btn btn-success me-2' type="submit" disabled={isSubmitting} >Save</button>
+                  <button className='btn btn-success me-2' type="submit"  >Save</button>
                   <button className='btn  btn-danger' onClick={()=>this.setState((prevState) => ({popup: false}))}>Cancel</button>
                 </div>
       </Form>

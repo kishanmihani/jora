@@ -17,6 +17,7 @@ import TestEmail from './Components/Product/Test/TestEmail/TestEmail';
 import TestChoosPassword from './Components/Product/Test/TestChoosPassword/TestChoosPassword';
 import TaskList from './Components/TaskList/TaskList';
 import Multipleentry from './Components/Product/Multipleentry/Multipleentry';
+import TestDashboard from './Components/Product/TestDashboard/TestDashboard';
 const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
 export const UserContext=React.createContext();
@@ -42,8 +43,9 @@ function App() {
             <Route path="Multientry" element={<Multipleentry />}></Route>
          </Route>
          <Route path='TestIndex' element={<TestIndex />}>
-         <Route path='' element={<TestEmail />} /> 
-         <Route path='TestChoosePassword' element={<TestChoosPassword />} />         
+         <Route path='' element={<TestEmail />} />
+         <Route path='TestPassword' element={<TestChoosPassword />} />
+         <Route path='TestDashboard' element={<TestDashboard />} />         
          </Route>
          <Route path='*' element={
           <Suspense fallback={<Loadericon />}>

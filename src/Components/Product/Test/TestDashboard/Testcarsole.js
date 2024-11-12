@@ -6,7 +6,7 @@ import { ProductService } from './Testcarsoledata'
 import { GlobalContext } from '../../../../globalstore';
 import axios from 'axios'
 import { Tag } from 'primereact/tag';
- function Testcarsole() {
+ function Testcarsole({artical}) {
     const { state, updateGlobalState } = useContext(GlobalContext);
     const { globalValue, user } = state;
     const [products, setProducts] = useState([]);
@@ -71,9 +71,18 @@ import { Tag } from 'primereact/tag';
     };
 
     return (
-        <div className="mb-2 col-12">
-            <Carousel value={products} numVisible={5} numScroll={5} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-            autoplayInterval={3000} itemTemplate={productTemplate} />
+        <div className="mb-2 col-12 d-flex flex-wrap">
+            {products.map(product =>{
+                if(product.prompt===artical){
+                    return (<div className="mt-2 pe-2 h-100 col-6 col-sm-6 col-md-4 col-lg-3">
+                        <div className="w-100 d-flex ">
+                            <img src={`${product.image_url }`} alt={product.id} className='rounded-4  comphoto w-100  h-100' />
+                        </div>  
+                    </div>)
+                }
+                
+            })}
+            {/* <Carousel value={productitemTemplate={productTemplate} /> */}
         </div>
     )
 }

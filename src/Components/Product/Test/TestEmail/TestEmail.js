@@ -106,7 +106,7 @@ class TestEmail extends PureComponent {
               <div className='leftaligndiv mt-5'>
                 <p className='fs-6 fw-bolder text-secondary mb-0'>STEP 2</p>
                 <p className='fs-3 fw-bolder mb-2'>Create an account to<br  className='testbreak'></br> continue</p>
-                <p className='fs-6 fw-normal mb-0'>You’ll be able to log in to Dingoo with this<br  className='testbreak'></br> email address and password.
+                <p className='fs-6 fw-normal mb-0'>You’ll be able to log in to Dingoo with<br  className='testbreak'></br> this email address and password.
                 </p>
               </div>
              </div>

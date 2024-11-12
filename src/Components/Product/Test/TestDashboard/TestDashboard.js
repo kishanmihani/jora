@@ -18,27 +18,16 @@ import { GlobalContext } from '../../../../globalstore';
     };
     this.fetchdata = this.fetchdata.bind(this);
     this.searchdata = this.searchdata.bind(this);
-    this.fetchAritcaldata=this.fetchdata.bind(this);
+    // this.fetchAritcaldata=this.fetchdata.bind(this);
   }
 
   componentDidMount() {
     this.fetchdata();
-    this.fetchAritcaldata()
+    // this.fetchAritcaldata()
     
   }
 
-  fetchAritcaldata(){
-    axios
-      .get('https://untitled-twkmuar27a-uc.a.run.app/api', {
-        headers: { "Authorization": `Token 97848e8babeb149f26a044838f1fcb6f52d60e7b` }
-      })
-      .then((response) => {
-        console.log( response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  
   fetchdata() {
     let myArray;
     let username;
@@ -83,12 +72,12 @@ import { GlobalContext } from '../../../../globalstore';
           
           <div>
             <p className='fs-3 fw-normal mt-4 mb-0'>Photograhy</p>
-          <Testcarsole></Testcarsole>
+          <Testcarsole artical="Photography"></Testcarsole>
           </div>
 
           <div>
             <p className='fs-3 fw-normal mt-4 mb-0'>Learning</p>
-          <Testcarsole></Testcarsole>
+          <Testcarsole artical="Learning"></Testcarsole>
           </div>
           </div>
 

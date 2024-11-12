@@ -5,6 +5,7 @@ import { withRouter } from '../../../Dashboard/withRouter';
 import { Outlet, useNavigate } from "react-router-dom";
 import { GlobalContext } from '../../../../globalstore';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 class TestEmail extends PureComponent {
   static contextType = GlobalContext;
   constructor(props){
@@ -45,6 +46,18 @@ class TestEmail extends PureComponent {
    }.bind(this))
    .catch(function (error) {
      console.log(error);
+     if(error.code ==='ERR_BAD_REQUEST'){
+      toast.warn('Invalid Credentials', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });;
+     }
    });
     
   }
@@ -111,6 +124,18 @@ class TestEmail extends PureComponent {
            </div>
           </div>
           </div>
+          <ToastContainer 
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" 
+        ></ToastContainer>
     </React.Fragment>
     )
   }

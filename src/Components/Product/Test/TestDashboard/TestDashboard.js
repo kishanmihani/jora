@@ -44,9 +44,7 @@ import { GlobalContext } from '../../../../globalstore';
     let username;
     const { state, updateGlobalState } = this.context;
     const  {user } = state;
-    if(user.token ==='' ) { 
-      this.props.navigate('/TestIndex/') 
-    }
+    
     
     axios
       .get('https://untitled-twkmuar27a-uc.a.run.app/api/customer-list/', {
@@ -63,6 +61,7 @@ import { GlobalContext } from '../../../../globalstore';
       })
       .catch((error) => {
         console.log(error);
+        
       });
   }
 

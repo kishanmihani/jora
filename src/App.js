@@ -1,9 +1,9 @@
 import './App.css';
-import {Routes,Route} from "react-router-dom";
+import {Routes,Route,useNavigate} from "react-router-dom";
 import UserInfo from './Components/UserInfo/UserInfo';
 import ErrorBoundary from './Components/ErrorBoundary';
 import { lazy, Suspense} from 'react';
-import React from 'react';
+import React,{useEffect} from 'react';
 import Authlogin from './Components/Auth/Authlogin';
 import DashboardIndex from './Components/Dashboard/DashboardIndex/DashboardIndex';
 import HooksCounterOne from './Config/Practice/HooksCounterOne';
@@ -21,6 +21,12 @@ const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
 export const UserContext=React.createContext();
 export const ChannelContext=React.createContext();
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    
+     navigate('/TestIndex') 
+    
+   },[])
   return (
     <div className="App overflow-auto">
      <ErrorBoundary>

@@ -1,14 +1,12 @@
-
 import './App.css';
 import {Routes,Route} from "react-router-dom";
 import UserInfo from './Components/UserInfo/UserInfo';
 import ErrorBoundary from './Components/ErrorBoundary';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense} from 'react';
+import React from 'react';
 import Authlogin from './Components/Auth/Authlogin';
 import DashboardIndex from './Components/Dashboard/DashboardIndex/DashboardIndex';
 import HooksCounterOne from './Config/Practice/HooksCounterOne';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import CounterThree from './Config/Practice/CounterThree';
 import ProductList from './Components/Product/ProductList';
 import TestIndex from './Components/Product/Test/TestIndex';
@@ -22,9 +20,7 @@ const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
 export const UserContext=React.createContext();
 export const ChannelContext=React.createContext();
-
 function App() {
- 
   return (
     <div className="App overflow-auto">
      <ErrorBoundary>

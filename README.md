@@ -1,3 +1,7 @@
+![Capture -5](https://github.com/user-attachments/assets/31f05117-a6d6-4aea-8d4e-e69c0e2b9086)
+![Capture -3](https://github.com/user-attachments/assets/3c90ac53-6e23-4e42-8353-dceff1bb01e6)
+![Capture 2](https://github.com/user-attachments/assets/17d32d7f-12fe-47fc-a7a7-545e454773b6)
+![Capture 1](https://github.com/user-attachments/assets/b958296b-de47-4769-93ae-0bfa335f0eb4)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -5,6 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+![Capture-7](https://github.com/user-attachments/assets/3c8775bd-cb12-46dd-a355-c9fba99be379)
+![Capture 10](https://github.com/user-attachments/assets/e111cb1f-37a9-4beb-8224-b1ed0cb1e7ab)
+![Capture](https://github.com/user-attachments/assets/5da5172b-41fa-43b6-ba2b-44ebea8b356c)
 
 ### `npm start`
 

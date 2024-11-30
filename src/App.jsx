@@ -16,17 +16,19 @@ import TestChoosPassword from './Components/Product/Test/TestChoosPassword/TestC
 import TestDashboard from './Components/Product/Test/TestDashboard/TestDashboard';
 import TaskList from './Components/TaskList/TaskList';
 import Multipleentry from './Components/Product/Multipleentry/Multipleentry';
+// import Usernew from './Components/UserInfo/Usernew';
 const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
+
 export const UserContext=React.createContext();
 export const ChannelContext=React.createContext();
 function App() {
   const navigate = useNavigate();
-  useEffect(() => {
+  // useEffect(() => {
     
-     navigate('/TestIndex') 
+  //    navigate('/TestIndex') 
     
-   },[])
+  //  },[])
   return (
     <div className="App overflow-auto">
      <ErrorBoundary>
@@ -35,12 +37,14 @@ function App() {
           < Authlogin />
           } />
          <Route path="dashboard" element={<Dashboardfast />} >
+           
             <Route path="" element={<DashboardIndex  />}></Route>
             <Route path="UserInfo" element={<UserInfo  />}></Route>
             <Route path="CounterThree" element={<CounterThree  />}></Route>
             <Route path="HooksCounterOne" element={<UserContext.Provider value={'Vishwas'}><ChannelContext.Provider value='codeinnovation'><HooksCounterOne  /></ChannelContext.Provider></UserContext.Provider>}></Route>
                                                                
             <Route path="ProductList" element={<ProductList />}></Route> 
+            <Route path="ProductList/id/:productId" element={<TaskList />}></Route> 
             <Route path="TaskList" element={<TaskList />}></Route>
             <Route path="Multientry" element={<Multipleentry />}></Route>
          </Route>
@@ -54,6 +58,7 @@ function App() {
           <MarkdownPreview /></Suspense>}></Route>  
       </Routes>
       </ErrorBoundary>
+     {/* < Usernew name='hi kishan' />    */}
     </div>
   );
 }

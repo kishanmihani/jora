@@ -8,15 +8,19 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import "../node_modules/primereact/resources/themes/lara-light-cyan/theme.css";
 import { PrimeReactProvider } from 'primereact/api';
 import { GlobalProvider } from './globalstore';
+import { Provider } from 'react-redux';
+import { store } from './redux/reducers/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     <PrimeReactProvider >
     <BrowserRouter>
+    <Provider store={store}>
     <GlobalProvider>
     <App />
     </GlobalProvider>
+    </Provider>
     </BrowserRouter>
        </PrimeReactProvider>
   </React.StrictMode>

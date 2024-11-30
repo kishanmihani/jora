@@ -24,11 +24,11 @@ export const UserContext=React.createContext();
 export const ChannelContext=React.createContext();
 function App() {
   const navigate = useNavigate();
-  // useEffect(() => {
+  useEffect(() => {
     
-  //    navigate('/TestIndex') 
+     navigate('/dashboard/TaskList') 
     
-  //  },[])
+   },[])
   return (
     <div className="App overflow-auto">
      <ErrorBoundary>

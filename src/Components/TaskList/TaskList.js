@@ -165,7 +165,7 @@ tablestatusupdate(event, id) {
            <table className='table text-start tasklist'>
             <thead>
              <tr className='sticky-top z-2'>
-                <th className='d-flex'>
+                {/* <th className='d-flex'>
                   <div className="input-group w-auto ">
                     <div className="input-group-append">
                       <input type='checkbox' className='form-check-input' checked={this.state.Allcheck} onClick={this.allcheck}></input>
@@ -176,7 +176,7 @@ tablestatusupdate(event, id) {
                         <option value="complete">Not Accepted</option>
                     </select>
                   </div>
-                </th>
+                </th> */}
                 <th><small>S.N</small></th>
                 <th><small>Task Name</small></th>
                 <th><small>Assignee</small></th>
@@ -190,7 +190,8 @@ tablestatusupdate(event, id) {
               {this.state.datalist.map((data,i)=>{
                
                 return ( <tr key={data.id} className={`${data.status === this.state.statusfilter  ? '':this.state.statusfilter ===''?'': 'collapse' }`}>
-                <td><input type='checkbox' value={data.id} onClick={this.tdcheck} checked={this.state.tdcheckbox.includes(data.id)} className='form-check-input' ></input></td>                  <td className='fw-bolder'>{ data.id}</td>
+                {/* <td><input type='checkbox' value={data.id} onClick={this.tdcheck} checked={this.state.tdcheckbox.includes(data.id)} className='form-check-input' ></input></td> */}
+                <td className='fw-bolder'>{ data.id}</td>
                   <td><small>{data.taskname}</small></td>
                   <td><small>{data.Assigne}</small></td>
                   <td><small><select value={data.status} className={`${data.status === 'complete'? 'text-success':'text-danger'}`} onChange={(e) => this.tablestatusupdate(e, data.id)}>

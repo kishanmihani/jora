@@ -15,9 +15,11 @@ function Dasboard(){
   const CheckUserInfo=UserInfo[0].userImg === null && UserInfo[0].userName === null ;
   useEffect(() => {
    if(CheckUserInfo){
-    navigate('/') 
+    // navigate('/') 
+    // UserInfo[0].userName = 'Kishan'
+    localStorage.setItem('Username','Kishan')
    }
-  })
+  },[])
   
 
 	return (

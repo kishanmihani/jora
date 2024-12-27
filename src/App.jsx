@@ -16,22 +16,23 @@ import TestChoosPassword from './Components/Product/Test/TestChoosPassword/TestC
 import TestDashboard from './Components/Product/Test/TestDashboard/TestDashboard';
 import TaskList from './Components/TaskList/TaskList';
 import Multipleentry from './Components/Product/Multipleentry/Multipleentry';
+import ProductDetails from './Components/Product/Productdetails/ProductDetails';
+import UpdateName from './Components/reactnew/UpdateName';
 // import Usernew from './Components/UserInfo/Usernew';
+import { QueryClient,QueryClientProvider } from '@tanstack/react-query' 
+import ProductCatgories from './Components/Product/Product-categories/Productcategories';
 const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
 
 export const UserContext=React.createContext();
+const queryClient = new QueryClient();
 export const ChannelContext=React.createContext();
 function App() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    
-     navigate('/dashboard/TaskList') 
-    
-   },[])
   return (
+    <QueryClientProvider client={queryClient}>
     <div className="App overflow-auto">
      <ErrorBoundary>
+     
       <Routes>
          <Route  path='' element={
           < Authlogin />
@@ -42,9 +43,9 @@ function App() {
             <Route path="UserInfo" element={<UserInfo  />}></Route>
             <Route path="CounterThree" element={<CounterThree  />}></Route>
             <Route path="HooksCounterOne" element={<UserContext.Provider value={'Vishwas'}><ChannelContext.Provider value='codeinnovation'><HooksCounterOne  /></ChannelContext.Provider></UserContext.Provider>}></Route>
-                                                               
+            <Route path="ProductCaegories" element={<ProductCatgories />}></Route>                                                    
             <Route path="ProductList" element={<ProductList />}></Route> 
-            <Route path="ProductList/id/:productId" element={<TaskList />}></Route> 
+            <Route path="ProductList/:productId" element={<ProductDetails />}></Route> 
             <Route path="TaskList" element={<TaskList />}></Route>
             <Route path="Multientry" element={<Multipleentry />}></Route>
          </Route>
@@ -57,9 +58,10 @@ function App() {
           <Suspense fallback={<Loadericon />}>
           <MarkdownPreview /></Suspense>}></Route>  
       </Routes>
+      {/* </QueryClientProvider > */}
       </ErrorBoundary>
-     {/* < Usernew name='hi kishan' />    */}
     </div>
+   </QueryClientProvider>
   );
 }
  

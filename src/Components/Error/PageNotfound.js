@@ -10,7 +10,7 @@ export default class PageNotfound extends Component {
   render() {
     return (
         <div className='h-100 w-100'>
-        <img src={pagenotfound} className='h-100 ' alt='pagenotfound'></img>
+        <img src={pagenotfound} className='h-100 ' alt='pagenotfound' loading="lazy"></img>
         </div>
       
     )

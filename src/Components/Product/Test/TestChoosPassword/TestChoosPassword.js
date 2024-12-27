@@ -27,7 +27,7 @@ import testLogo from '../../../../Assests/Images/Logo.svg'
       <div className='card border-0  p-3 rounded-5 w-100 align-items-center d-flex'>
            <div className='card-body d-flex flex-wrap col-12' id='testPasswordcm'>
              <div className='col-12 d-flex flex-column col-lg-5 col-md-6 col-sm-12'>
-              <img src={testLogo} alt='testLogo' className='testlogo'/>
+              <img src={testLogo} alt='testLogo' className='testlogo' loading="lazy"/>
               <div className='leftaligndiv mt-5'>
                 <p className='fs-6 fw-bolder text-secondary mb-0'>STEP 2</p>
                 <p className='fs-3 fw-bolder mb-2'>Create an account to<br  className='testbreak'></br> continue</p>

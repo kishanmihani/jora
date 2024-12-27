@@ -5,7 +5,9 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { FaArrowUp ,FaArrowDown } from "react-icons/fa";
 import { MdOutlineAccountBalanceWallet ,MdOutlineSpeakerNotes } from "react-icons/md";
-import TaskList from '../../TaskList/TaskList';
+import UpdateName from '../../reactnew/UpdateName';
+import ChangeName from '../../reactnew/ChangeName';
+import ChangeNametwo from '../../reactnew/ChangeNametwo';
 
 class DashboardIndex extends PureComponent {
   render() {
@@ -19,7 +21,9 @@ class DashboardIndex extends PureComponent {
       <React.Fragment>
         <section >
                   <section id="card-container-only" >
-                  {/* first card*/}
+                    {/* <UpdateName />
+                    <ChangeName />
+                    <ChangeNametwo /> */}
                   {cardItimes.map((item, index) => (
                   <div id="card" key={index}>
                     <div id="card-image-container">

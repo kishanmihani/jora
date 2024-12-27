@@ -64,7 +64,7 @@ import { Tag } from 'primereact/tag';
         return (
             <div className="me-4 mt-2">
                 <div className="w-100 d-flex ">
-                    <img src={`${product.image_url }`} alt={product.id} className='rounded-4  comphoto w-100 h-100' />
+                    <img src={`${product.image_url }`} alt={product.id} className='rounded-4  comphoto w-100 h-100' loading="lazy"/>
                 </div>  
             </div>
         );
@@ -76,7 +76,7 @@ import { Tag } from 'primereact/tag';
                 if(product.prompt===artical){
                     return (<div className="mt-2 pe-2 h-100 col-6 col-sm-6 col-md-4 col-lg-3">
                         <div className="w-100 d-flex ">
-                            <img src={`${product.image_url }`} alt={product.id} className='rounded-4  comphoto w-100  h-100' />
+                            <img src={`${product.image_url }`} alt={product.id} className='rounded-4  comphoto w-100  h-100' loading="lazy" />
                         </div>  
                     </div>)
                 }

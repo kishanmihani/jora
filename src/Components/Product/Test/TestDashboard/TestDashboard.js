@@ -65,7 +65,7 @@ import { GlobalContext } from '../../../../globalstore';
         <div className='blackcolor card  w-100 border-0 rounded-0'>
           <div className='card-body p-5 pb-0 text-white text-start'>
           <div className='col-12 d-flex flex-column col-lg-5 col-md-6 col-sm-12'>
-          <img src={testLogo} alt='testLogo' className='testlogo'/>
+          <img src={testLogo} alt='testLogo' className='testlogo' loading="lazy"/>
           <p className='fs-3 fw-bolder mt-4'>Welcome <span className='border-bottom'>{this.state.name}</span></p>
           <p className='fs-6 fw-bolder'>Hope you having a good day!</p>
           </div>

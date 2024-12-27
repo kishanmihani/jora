@@ -1,8 +1,5 @@
 import React, { PureComponent } from 'react'
 import '../TestIndex.css'
-import { IoLogoInstagram } from 'react-icons/io'
-import { RiFacebookLine, RiYoutubeLine } from 'react-icons/ri'
-import { RxTwitterLogo } from 'react-icons/rx'
 import { AiTwotoneCopyright } from 'react-icons/ai'
 import facebooksrc from '../../../../Assests/Images/facebook.svg'
 import instagramsrc from '../../../../Assests/Images/instagram.svg'
@@ -26,7 +23,7 @@ class TestFooter extends PureComponent {
               <div className='row w-100  leftaligndiv'>
               <p className='text-left d-flex mb-5'>
                 {this.state.madiaimg.map((madia,i) =>{
-                 return (<img src={madia} data-id='i' id='medialogo' className=' me-5'></img>)
+                 return (<img src={madia} data-id='i' id='medialogo' className=' me-5' loading="lazy"></img>)
                 })}
                 
                 </p>

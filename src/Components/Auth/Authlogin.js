@@ -125,7 +125,7 @@ function Authlogin(){
 
             <div className='form-group mt-3'>
               <label className='form-label label-left w-100'>Password</label>
-              <Field type="password" name="password" className="form-control" placeholder='********' />
+              <Field type="password" name="password" className="form-control" placeholder='********' autoComplete="current-password" />
               <ErrorMessage name="password"  className="text-danger text-start" component="div" />
             </div>
             <div className="d-flex justify-content-between pt-3">
@@ -157,7 +157,7 @@ function Authlogin(){
       </div>
           </Form>
           <div className="col-sm-0 col-md-0 col-xl-7 col-xxl-7 h-100">
-            <img src={LoginImage} className="w-100 h-100" alt='login-poster' />
+            <img src={LoginImage} className="w-100 h-100" alt='login-poster' loading="lazy"/>
           </div>
         </div>
       )}

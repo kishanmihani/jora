@@ -4,18 +4,20 @@ import './ProductList.css'
 import { BiDollar } from "react-icons/bi";
 import { Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { productlistapi} from '../../Config/endpoint';
+import { productlistapi,authAxios} from '../../Config/endpoint';
 import { useSelector , useDispatch} from 'react-redux';
 import { setProduct } from '../../redux/actions/productActions';
 
 export default function ProductList() {
   const productss = useSelector((states)=> states.allProducts.product  )
+  console.log(productss)
   const dispatchProduct = useDispatch()
   const [datavalue,setdatavalue]=useState(true)
-    
-  const  tabledata =useCallback(()=>{
-    axios
-    .get(productlistapi)
+
+    console.log(productss)
+  const  tabledata =useCallback(async ()=>{
+   await authAxios
+    .get('/products')
     .then(response =>{
         dispatchProduct(setProduct(response.data.products))
         setdatavalue(false)
@@ -34,7 +36,7 @@ export default function ProductList() {
       <div className='card container-fluids border-0 h-100 overflow-auto ' id='productlist'>
         <Link to='/dashboard/ProductCaegories'>a</Link>
         <div className='card-body h-100 w-100 col-12 flex-wrap d-flex'>
-         {productss.map((product)=>{
+         {productss?.map((product)=>{
             const {id,title,thumbnail,price,description,rating} = product;
             return (
               <div key={id} className=' col-xs-12 col-sm-12 col-md-6 col-xl-4 col-xxl-3 p-2 box-height'  >

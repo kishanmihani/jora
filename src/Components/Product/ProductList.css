@@ -32,7 +32,10 @@
   #productlist::-webkit-scrollbar-thumb:hover {
     background: #1100ff; 
   }
-
+  .thumbnail{
+   height: 150px;
+   width: 150px;
+  }
   #productdecription{
   overflow: hidden;
   display: -webkit-box;

@@ -19,7 +19,7 @@ import Multipleentry from './Components/Product/Multipleentry/Multipleentry';
 import ProductDetails from './Components/Product/Productdetails/ProductDetails';
 import UpdateName from './Components/reactnew/UpdateName';
 // import Usernew from './Components/UserInfo/Usernew';
-import { QueryClient,QueryClientProvider } from '@tanstack/react-query' 
+import {QueryClientProvider,QueryClient} from '@tanstack/react-query'
 import ProductCatgories from './Components/Product/Product-categories/Productcategories';
 const Dashboardfast = lazy(() => import('./Components/Dashboard/Dashboard'));
 const MarkdownPreview = lazy(() => import('./Components/Error/PageNotfound'));
@@ -29,10 +29,10 @@ const queryClient = new QueryClient();
 export const ChannelContext=React.createContext();
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    
     <div className="App overflow-auto">
      <ErrorBoundary>
-     
+     <QueryClientProvider client={queryClient}>
       <Routes>
          <Route  path='' element={
           < Authlogin />
@@ -58,10 +58,9 @@ function App() {
           <Suspense fallback={<Loadericon />}>
           <MarkdownPreview /></Suspense>}></Route>  
       </Routes>
-      {/* </QueryClientProvider > */}
+      </QueryClientProvider >
       </ErrorBoundary>
     </div>
-   </QueryClientProvider>
   );
 }
  
